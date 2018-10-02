@@ -1,0 +1,9 @@
+# Has one
+https://en.wikipedia.org/w/api.php?action=query&titles=Frida_Kahlo&prop=pageimages&format=json&pithumbsize=500
+
+# Has none
+https://en.wikipedia.org/w/api.php?action=query&titles=Hannah_Hoch&prop=pageimages&format=json&pithumbsize=500
+
+Make sure vimcompletesme works!
+
+Run unit tests from vim session :! ruby %
