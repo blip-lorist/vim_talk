@@ -7,4 +7,11 @@ class ImageDownloader
     first_page, image_info  = response_hash["query"]["pages"].first
     image_url = image_info["thumbnail"]["source"]
   end
+
+  def self.download_image(image_url, filename)
+    response = HTTParty.get(image_url)
+		File.open(filename, "w") do |file|
+      file.write(response.body)
+    end
+  end
 end
