@@ -16,4 +16,10 @@ class ImageDownloader
       file.write(reponse.body)
     end
   end
+
+  def self.download_wikipedia_image_for(search_term)
+    image_url = self.get_image_url_for(search_term)
+    filename = search_term.gsub(" ","_").downcase
+    self.download_image(image_url, filename)
+  end
 end

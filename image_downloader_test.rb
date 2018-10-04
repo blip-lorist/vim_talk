@@ -16,9 +16,15 @@ class TestImageDownloader < Minitest::Test
     filename = article_name.gsub(" ","_").downcase
     ImageDownloader.download_image(image_url, filename)
     assert(File.file?("./#{filename}"))
+    File.delete(filename)
   end
 
-  # TO-DO: WRITE ImageDownloader.download_wikipedia_image(search_term)
-  # test and method
+  def test_it_downloads_an_image_from_wikipedia
+    article_name = "Frida Kahlo"
+    ImageDownloader.download_wikipedia_image_for(article_name)
+    filename = article_name.gsub(" ","_").downcase
+    assert(File.file?("./#{filename}"))
+    File.delete(filename)
+  end
 end
 
