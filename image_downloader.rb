@@ -1,5 +1,15 @@
 require 'httparty'
 class ImageDownloader
+
+  # Downloads the main wikipedia image for a given search term
+  def self.download_wikipedia_image_for(search_term)
+    image_url = self.get_image_url_for(search_term)
+    filename = search_term.gsub(" ","_").downcase
+    self.download_image(image_url, filename)
+  end
+
+  private
+
   def self.get_image_url_for(article_name)
     article_name = article_name.gsub(" ","_")
     reponse = HTTParty.get("https://en.wikipedia.org/w/api.php?action=query&titles=#{article_name}&prop=pageimages&format=json&pithumbsize=500")
@@ -17,9 +27,4 @@ class ImageDownloader
     end
   end
 
-  def self.download_wikipedia_image_for(search_term)
-    image_url = self.get_image_url_for(search_term)
-    filename = search_term.gsub(" ","_").downcase
-    self.download_image(image_url, filename)
-  end
 end
