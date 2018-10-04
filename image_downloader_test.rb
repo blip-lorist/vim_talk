@@ -17,5 +17,8 @@ class TestImageDownloader < Minitest::Test
     ImageDownloader.download_image(image_url, filename)
     assert(File.file?("./#{filename}"))
   end
+
+  # TO-DO: WRITE ImageDownloader.download_wikipedia_image(search_term)
+  # test and method
 end
 
